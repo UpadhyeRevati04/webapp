@@ -1,0 +1,361 @@
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Updated to a modern font */
+    background: linear-gradient(135deg, #ced6d9, #2980B9); /* Gradient background for the body */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #34d5db; /* Vibrant color for header */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a shadow to header */
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+/* Navigation Styles */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    color: #f1c40f; /* Bright hover color */
+    text-decoration: underline;
+    outline: none;
+}
+
+/* Additional Styles for Login Page */
+.login-container {
+    max-width: 400px; /* Maximum width for the form container */
+    margin: 50px auto; /* Center it vertically and horizontally */
+    padding: 20px; /* Add padding for comfort */
+    background: white; /* Background color for the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+header {
+    margin-bottom: 20px; /* Space below header */
+}
+
+h1 {
+    font-size: 2rem; /* Larger font size for the title */
+    text-align: center; /* Center the header text */
+    color: #2c3e50; /* Dark color for header */
+}
+
+input[type="text"] {
+    width: 100%; /* Full width input field */
+    padding: 12px; /* Padding inside the input */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners for input */
+    margin-bottom: 15px; /* Space between input and button */
+    font-size: 1rem; /* Font size for input text */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+input[type="text"]:focus {
+    border-color: #2980B9; /* Highlight border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); /* Add shadow on focus */
+}
+
+button {
+    width: 100%; /* Full width button */
+    padding: 12px; /* Padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners for button */
+    background-color: #34d5db; /* Button background color */
+    color: white; /* Button text color */
+    font-size: 1rem; /* Font size for button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+button:hover {
+    background-color: #2980B9; /* Darker button color on hover */
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Profile Photo Styles */
+.profile-photo {
+    width: 150px; /* Increased width */
+    height: 150px; /* Increased height */
+    border-radius: 50%; /* Oval shape */
+    background-color: #ccc; /* Default background color */
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image */
+    margin-right: 20px; /* Space between photo and input */
+}
+
+/* Input Field Styles */
+input[type="file"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Rounded corners */
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: #34d5db; /* Highlight border color */
+}
+
+/* Main Content */
+main {
+    text-align: left;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 600px) {
+    header {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    .profile-photo {
+        width: 100px; /* Decrease size on small screens */
+        height: 100px; /* Decrease size on small screens */
+    }
+}
+
+/* Chat Container */
+.chat-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* More depth with shadow */
+    padding: 30px;
+}
+
+/* Chat Window */
+.chat-window {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack messages vertically */
+}
+
+/* Chat Message Styles */
+.chat-message {
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 15px;
+    max-width: 75%;
+    word-wrap: break-word;
+    display: block;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds depth to messages */
+}
+
+/* Sender's Message (Right-Aligned) */
+.sender-message {
+    background: #8BC34A;
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+    border-top-right-radius: 0;
+    animation: slide-in-right 0.3s ease-out; /* Slide-in effect */
+}
+
+/* Receiver's Message (Left-Aligned) */
+.receiver-message {
+    background: #FF7043;
+    color: white;
+    align-self: flex-start;
+    text-align: left;
+    border-top-left-radius: 0;
+    animation: slide-in-left 0.3s ease-out; /* Slide-in effect */
+}
+
+/* Input Field and Send Button Container */
+.input-container {
+    display: flex; /* Make sure input and arrow are on the same line */
+    align-items: center; /* Center them vertically */
+    margin-top: 10px; /* Add margin for spacing */
+}
+
+/* Input Text Field */
+input[type="text"] {
+    width: calc(100% - 70px);
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 30px; /* Rounded input field */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+input[type="text"]:focus {
+    border-color: #d8e1e8; /* Highlight on focus */
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Send Button (Arrow) */
+#send-arrow {
+    font-size: 24px; /* Increase the size of the arrow */
+    margin-left: 10px; /* Space between input and arrow */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: color 0.3s ease; /* Transition effect */
+}
+
+#send-arrow:hover {
+    color: #e74c3c; /* Change color on hover */
+}
+
+/* Keyframe Animations for Sliding Messages */
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 600px) {
+    .chat-container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    header {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    .chat-window {
+        height: 300px;
+    }
+}
+
+/* Settings Container */
+.settings-container {
+    max-width: 800px;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Add depth with shadow */
+}
+
+/* Setting Option Styles */
+.setting-option {
+    margin-bottom: 20px; /* Spacing between options */
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9; /* Light background for options */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.setting-option h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Button Styles */
+.settings-button {
+    background-color: #34d5db; /* Button background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.settings-button:hover {
+    background-color: #2c3e50; /* Darker shade on hover */
+}
+
+/* Feedback Container */
+.feedback-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: none; /* Prevents resizing of the textarea */
+}
+
+/* Button Styles */
+button {
+    background-color: #34d5db; /* Button background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2c3e50; /* Darker shade on hover */
+}

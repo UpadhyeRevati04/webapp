@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Chat Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Chat Room</h1>
+        <nav>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="chat-container">
+            <div class="chat-window" id="chat-window"></div>
+            <div class="input-container">
+                <input type="text" id="message-input" placeholder="Type a message..." />
+                <span id="send-arrow" role="button" aria-label="Send message" title="Send message">➡️</span> <!-- Arrow icon -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const ws = new WebSocket('ws://localhost:8080');
+
+        ws.onopen = function () {
+            console.log('Connected to the WebSocket server');
+            document.getElementById('send-button').disabled = false;
+        };
+
+        ws.onerror = function (error) {
+            console.error('WebSocket Error:', error);
+        };
+
+        ws.onclose = function () {
+            console.log('WebSocket connection closed.');
+        };
+
+        document.getElementById('send-arrow').addEventListener('click', function () {
+    const input = document.getElementById('message-input');
+    const messageText = input.value.trim();
+
+    if (ws.readyState === WebSocket.OPEN && messageText !== '') {
+        const username = localStorage.getItem('username') || 'Unknown User';
+        const fullMessage = `${username}: ${messageText}`;
+        console.log('Sending message:', fullMessage);
+
+        ws.send(fullMessage); // Send the message as plain text
+        input.value = ''; // Clear the input field
+    } else if (ws.readyState === WebSocket.CONNECTING) {
+        console.log('WebSocket is still connecting. Please wait...');
+    } else {
+        console.error('WebSocket is not open. Cannot send message.');
+    }
+});
+
+
+        // Handle incoming messages and display them in the chat window
+        ws.onmessage = function (event) {
+            if (event.data instanceof Blob) {
+                event.data.text().then((text) => {
+                    console.log('Received message:', text);
+                    const [sender, messageText] = text.split(': ');
+                    if (sender && messageText) {
+                        addMessageToChat(sender, messageText);
+                    }
+                }).catch(err => console.error('Blob parsing error:', err));
+            } else {
+                const message = event.data;
+                console.log('Received message:', message);
+                const [sender, messageText] = message.split(': ');
+                if (sender && messageText) {
+                    addMessageToChat(sender, messageText);
+                }
+            }
+        };
+
+        function addMessageToChat(sender, message) {
+            const chatWindow = document.getElementById('chat-window');
+            const messageElement = document.createElement('div');
+            
+            // Check if the message is sent by the current user or received
+            const username = localStorage.getItem('username') || 'Unknown User';
+            if (sender === username) {
+                messageElement.classList.add('chat-message', 'sender-message'); // For sent messages
+            } else {
+                messageElement.classList.add('chat-message', 'user-message'); // For received messages
+            }
+            
+            messageElement.textContent = `${sender}: ${message}`;
+            chatWindow.appendChild(messageElement);
+            chatWindow.scrollTop = chatWindow.scrollHeight; // Auto scroll to the bottom
+        }
+    </script>
+</body>
+
+</html>
